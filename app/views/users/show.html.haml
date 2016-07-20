@@ -1,0 +1,16 @@
+%h4 Welcome #{@user.username}
+#last_tool
+
+%ul#tools_chest
+  - if @user.tools.empty?
+    %h5 You need some tools!
+  - else
+    %h5#most_recent 
+      most recent tool: #{@user.tools.last.name}
+    - @user.tools.each do |tool|
+      %li
+        = tool.name
+        \: #{tool.price}
+
+
+= link_to 'Create tool', new_tool_path

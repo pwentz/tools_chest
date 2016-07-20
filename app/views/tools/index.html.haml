@@ -1,0 +1,8 @@
+%h4 Tools!
+
+%ul
+ - @tools.each do |tool|
+  %li
+   = tool.name
+   \: $#{tool.price}
+= link_to 'Create a new tool!', new_tool_path
