@@ -4,3 +4,7 @@
   - @category.tools.each do |tool|
     %li
       #{link_to tool.name, admin_tool_path(current_user, tool)}: #{link_to tool.user.username, admin_user_path(current_user, tool.user)}
+
+= link_to 'Edit this category', edit_admin_category_path(current_user, @category)
+%br/
+= link_to 'Delete this category', admin_category_path(current_user, @category), method: :delete

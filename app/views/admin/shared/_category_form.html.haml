@@ -1,0 +1,14 @@
+= form_for [:admin, @category] do |f|
+  = f.label :name
+  = f.text_field :name
+
+  .tools
+    - Tool.all.each do |tool|
+      - if @category.tools.include?(tool)
+        = check_box_tag :tool, tool.id, true, :name => "category[tool_ids][]", :id => "#{tool.id}"
+      - else
+        = check_box_tag :tool, tool.id, false, :name => "category[tool_ids][]", :id => "#{tool.id}"
+      = tool.name
+      %br/
+
+  = f.submit

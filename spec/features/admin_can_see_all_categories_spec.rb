@@ -4,6 +4,7 @@ describe "Admin can see all categories" do
   scenario "they can see all categories from categories index" do
     admin = create(:user)
     category_one, category_two = create_list(:category, 2)
+    ApplicationController.any_instance.stub(:current_user).and_return(admin)
 
     visit admin_categories_path(admin)
 
