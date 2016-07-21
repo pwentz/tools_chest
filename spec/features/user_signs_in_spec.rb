@@ -25,18 +25,4 @@ describe "User signs in", :type => :feature do
       expect(page.find("h5")).to have_text("You need some tools!")
     end
   end
-
-  context "user has tools" do
-    scenario "they see their tools" do
-      user = create(:user)
-      tool = create(:tool, :user => user)
-      ApplicationController.any_instance.stub(:current_user).and_return(user)
-
-      visit user_path(user)
-
-      expect(
-        page.find("#tools_chest")
-      ).to have_content(tool.name)
-    end
-  end
 end

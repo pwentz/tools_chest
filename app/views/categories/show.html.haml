@@ -1,0 +1,8 @@
+%h5= @category.name
+
+%ul#tools_list
+  - @tools.each do |tool|
+    %li
+      = link_to tool.name, tool_path(tool)
+      \: $#{tool.price}
+

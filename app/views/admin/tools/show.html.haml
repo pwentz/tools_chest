@@ -1,0 +1,12 @@
+%h5= @tool.name
+
+%ul#tool_stats
+  %li Price: #{@tool.price}
+  %li Quantity: #{@tool.quantity}
+  - unless @tool.category.nil?
+    %li Category: #{link_to @tool.category.name, admin_category_path(current_user, @tool.category_id)}
+  %li User: #{link_to @tool.user.username, admin_user_path(current_user, @tool.user_id), required: true}
+
+= link_to "Edit this tool", edit_admin_tool_path(current_user, @tool)
+%br/
+= link_to "Delete this tool", admin_tools_path(current_user), method: :delete

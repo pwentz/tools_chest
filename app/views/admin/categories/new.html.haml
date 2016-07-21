@@ -1,0 +1,13 @@
+%h5 Create new category
+
+= form_for [:admin, @category] do |f|
+  = f.label :name
+  = f.text_field :name
+
+  .tools
+    - Tool.all.each do |tool|
+      = check_box_tag :tool, tool.name, false, :name => "category[tool_ids][]", :id => "#{tool.id}"
+      = tool.name
+      %br/
+
+  = f.submit

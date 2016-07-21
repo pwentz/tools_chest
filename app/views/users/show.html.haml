@@ -9,8 +9,8 @@
       most recent tool: #{@user.tools.last.name}
     - @user.tools.each do |tool|
       %li
-        = tool.name
-        \: #{tool.price}
+        = link_to tool.name, tool_path(tool)
+        \: $#{tool.price}
 
 
 = link_to 'Create tool', new_tool_path

@@ -1,0 +1,10 @@
+%ul
+  %h4 Name: #{@tool.name}
+  %li Price: $#{@tool.price}
+  %li Quantity: #{@tool.quantity}
+  %li 
+    Category: 
+    = link_to @tool.category.name, category_path(@tool.category)
+
+= link_to 'Edit this tool', edit_tool_path(@tool)
+= link_to 'Delete this tool', tool_path(@tool), method: :delete

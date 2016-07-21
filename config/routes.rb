@@ -3,7 +3,15 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root 'tools#index'
 
+
+  namespace :admin do
+    resources :tools
+    resources :categories, only: [:index, :show, :new, :create]
+    resources :users, only: [:show]
+  end
+
   resources :tools
+  resources :categories, only: [:index, :show]
   resources :users, only: [:index, :show]
 
   get '/login', to: 'sessions#new'

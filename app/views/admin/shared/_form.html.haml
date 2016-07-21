@@ -1,0 +1,15 @@
+= form_for [:admin, @tool] do |f|
+  = f.label :name
+  = f.text_field :name
+  %br/
+  = f.label :price
+  = f.text_field :price
+  %br/
+  = f.label :quantity
+  = f.text_field :quantity
+  %br/
+  = f.collection_select :category_id, Category.all, :id, :name
+  %br/
+  = f.collection_select :user_id, User.all, :id, :username
+  %br/
+  = f.submit 

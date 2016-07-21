@@ -1,0 +1,6 @@
+%h5 Hello, admin!
+
+%ul
+ - Category.all.each do |category|
+  %li
+   = link_to category.name, admin_category_path(current_user, category)

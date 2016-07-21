@@ -1,7 +1,12 @@
 class ToolsController < ApplicationController
+  before_action :set_tool, only: [:show, :edit, :destroy]
 
   def index
-    @tools = Tool.all
+    if current_user
+      redirect_to user_path(current_user)
+    else
+      flash.notice = "You must login first to see your tools"
+    end
   end
 
   def new
@@ -9,7 +14,6 @@ class ToolsController < ApplicationController
   end
 
   def show
-    @tool = Tool.find(params["id"])
   end
 
   def create
@@ -27,15 +31,20 @@ class ToolsController < ApplicationController
   end
 
   def edit
-    @tool = Tool.find(params["id"])
   end
 
   def destroy
+    @tool.destroy
+    redirect_to user_path(current_user)
   end
 
   private
 
+  def set_tool
+    @tool = Tool.find(params["id"])
+  end
+
   def tool_params
-    params.require(:tool).permit(:name, :quantity, :price)
+    params.require(:tool).permit(:name, :quantity, :price, :category_id)
   end
 end
