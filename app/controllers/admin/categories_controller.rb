@@ -4,6 +4,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def show
+    require 'pry'; binding.pry
   end
 
   def new
