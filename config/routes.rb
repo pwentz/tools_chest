@@ -5,18 +5,25 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :tools
+    resources :tools, only: [:index]
     resources :categories
-    resources :users, only: [:show]
   end
 
   resources :tools
   resources :categories, only: [:index, :show]
-  resources :users, only: [:index, :show]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  namespace :api do
+    namespace :v1 do
+      namespace :admin do
+        resources :tools
+      end
+    end
+  end
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
