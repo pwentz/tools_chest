@@ -19,6 +19,6 @@ class Api::V1::Admin::ToolsController < Api::V1::BaseController
   private
 
   def tool_params
-    params.require(:tool).permit(:name, :price, :quantity, :category_id, :user_id)
+    params.require(:tool).permit(:id, :name, :price, :quantity, :category_id, :user_id)
   end
 end
